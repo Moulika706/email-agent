@@ -1,0 +1,22 @@
+# Secrets - never push these
+.env
+credentials.json
+token.json
+
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Zed editor
+.zed/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+processed_emails.json
+last_run.txt
