@@ -1,0 +1,36 @@
+name: Email Agent
+
+on:
+  schedule:
+    - cron: "30 3 * * *" # 9:00 AM IST
+    - cron: "30 15 * * *" # 9:00 PM IST
+  workflow_dispatch: # Allows manual trigger anytime
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Create credentials.json
+        run: echo '${{ secrets.GMAIL_CREDENTIALS }}' > credentials.json
+
+      - name: Create token.json
+        run: echo '${{ secrets.GMAIL_TOKEN }}' > token.json
+
+      - name: Run Email Agent
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python main.py
