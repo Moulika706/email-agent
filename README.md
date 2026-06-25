@@ -169,19 +169,3 @@ Feel free to fork and customize for your own use case! PRs welcome.
 ## 📄 License
 
 MIT License — free to use, modify and distribute.
-
----
-
-⭐ **Star this repo if it helped you land an internship!**
-```
-
----
-
-Then push:
-```bash
-git add .
-git commit -m "docs: add portfolio README"
-git push origin main
-```
-
-Tell me once it's live on GitHub! 🚀
